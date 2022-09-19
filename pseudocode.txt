@@ -1,0 +1,40 @@
+program cashier system
+
+//declare variable
+READ AND WRITE "name_barang" with character
+READ AND WRITE "harga_satuan" with number
+READ AND WRITE "jumlah_beli" with number
+READ AND WRITE "moneypaid" with number
+READ AND WRITE "change" with number
+READ AND WRITE "cart" STORE with nested array[["nama_barang","harga_satuan", "jumlah_beli"], [], [], [], ...harga total will be input]
+
+//algorithm to calculate harga_total
+READ AND WRITE "harga_total" with number
+READ AND WRITE "i" STORE with number 0
+WHILE "i" less than length array "cart"
+    DO
+    STORE "harga_total" with CALCULATE "harga_total" addition ("cart[i][0]" multiply by "cart[i][1]")
+    STORE "i" with CALCULATE "i" sum 1
+
+//algorithm to get discount
+READ AND WITE "diskon" with boolean
+IF "harga_total" more then or equal to 1000000
+    STORE "total" with CALCULATE "harga_total" - ("harga_total" * 0.1)
+    STORE "harga_total" with "total"
+
+IF "harga_total" more then or equal to 500000
+    STORE "total" with CALCULATE "harga_total" - ("harga_total" * 0.05)
+    STORE "harga_total" with "total"
+
+//Perhitungan uang kembalian dari uang yang dibayarkan
+STORE "change" with CALCULATE "moneypaid" - "harga_total"
+
+READ AND WRITE "i"
+STORE "i" with number 0
+
+//cetak dokumen (recipt)
+WHILE "i" less than length array "cart"
+    print ""cart[i][0]" + "cart[i][1]" + "cart[i][2]"
+print "harga_total"
+print "moneypaid"
+print "change"
